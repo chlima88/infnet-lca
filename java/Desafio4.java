@@ -12,25 +12,25 @@ public class Desafio4 {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Informe o nome: ");
-        Desafio4.nome = scanner.nextLine();
+        nome = scanner.nextLine();
         System.out.print("Informe o sobrenome: ");
-        Desafio4.sobrenome = scanner.nextLine();
+        sobrenome = scanner.nextLine();
         System.out.print("Informe a idade: ");
-        Desafio4.idade = scanner.nextInt();
+        idade = scanner.nextInt();
         System.out.print("Informe o salario: ");
-        Desafio4.salario = scanner.nextDouble();
+        salario = scanner.nextDouble();
         System.out.print("Informe o desconto: ");
-        Desafio4.desconto = scanner.nextDouble();
+        desconto = scanner.nextDouble();
 
-        Desafio4.impressao();
+        impressao();
 
     }
 
     static public void impressao(){
-        int anoNascimento = calculaAnoNascimento(Desafio4.idade);
-        double salarioLiquido = calculaSalarioLiquido(Desafio4.salario, Desafio4.desconto);
+        int anoNascimento = calculaAnoNascimento(idade);
+        double salarioLiquido = calculaSalarioLiquido(salario, desconto);
 
-        System.out.print("O funcionario " + Desafio4.nome + " " + Desafio4.sobrenome 
+        System.out.print("O funcionario " + nome + " " + sobrenome 
                         + " nasceu em " + anoNascimento + " e ganha R$" 
                         + salarioLiquido );
     }

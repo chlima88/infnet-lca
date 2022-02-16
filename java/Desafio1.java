@@ -13,9 +13,9 @@ public class Desafio1 {
     private static void processamento(){
         int aux;
         
-        aux = Desafio1.a;
-        Desafio1.a = Desafio1.b;
-        Desafio1.b = aux;
+        aux = a;
+        a = b;
+        b = aux;
     }
     
     private static void impressao(String etapa){

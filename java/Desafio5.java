@@ -16,12 +16,12 @@ public class Desafio5 {
         System.out.print("Informe a qtd de empates: ");
         empates = scanner.nextInt();
         
-        pontos = Desafio5.calculaPontos(vitorias, empates);
-        Desafio5.impressao(nome, pontos);
+        pontos = calculaPontos(vitorias, empates);
+        impressao(nome, pontos);
     }
 
     static public void impressao(String nome, int pontos){
-        System.out.print("O time " + nome + " está com "
+        System.out.print("O time " + nome + " estï¿½ com "
                         + pontos + " pontos.");
     }
 
