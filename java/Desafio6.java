@@ -17,56 +17,55 @@ public class Desafio6 {
 
     static String nome;
     static String curso;
-
-
-    static int prova1;
-    static int trabalho1;
-    static int prova2;
-    static int trabalho2;
-    static int media;
-    static String resultado;
-    
-    static Scanner scanner = new Scanner(System.in);
-
+    static double prova1;
+    static double trabalho1;
+    static double prova2;
+    static double trabalho2;
 
     static public void main(String[] args) {
 
+        receberDados();
+
+        double media = calculaMedia();
+        String resultado = calculaResultado(media);
+
+        imprimeResultado(resultado);
+
+    }
+
+    static public void receberDados() {
+        Scanner scanner = new Scanner(System.in);
+
         System.out.print("Informar o nome: ");
-        Desafio6.nome = scanner.nextLine();
+        nome = scanner.nextLine();
         System.out.print("Informar o curso: ");
-        Desafio6.curso = scanner.nextLine();
+        curso = scanner.nextLine();
 
         System.out.print("Informar a nota da Prova 1: ");
-        prova1 = scanner.nextInt();
+        prova1 = Double.parseDouble(scanner.nextLine());
         System.out.print("Informar a nota do Trabalho 1: ");
-        trabalho1 = scanner.nextInt();
+        trabalho1 = Double.parseDouble(scanner.nextLine());
         System.out.print("Informar a nota da Prova 2: ");
-        prova2 = scanner.nextInt();
+        prova2 = Double.parseDouble(scanner.nextLine());
         System.out.print("Informar a nota do Trabalho 2: ");
-        trabalho2 = scanner.nextInt();
-
-        calculaResultado();
-
-        imprimeResultado();
-
+        trabalho2 = Double.parseDouble(scanner.nextLine());
     }
 
-    static public void calculaMedia() {
-        media =  ( prova1 + trabalho1 + prova2 + trabalho2 ) / 2;
+    static public double calculaMedia() {
+        return ( prova1 * 7 + trabalho1 * 3 + prova2 * 6 + trabalho2 * 4 ) / 2;
     }
 
-    static public void calculaResultado() {
-        calculaMedia();
+    static public void calculaResultado(double media) {
 
         if (media >= 70) {
-            resultado = "aprovado";
+            return "aprovado";
         } else {
-            resultado = "reprovado";
+            return "reprovado";
         }
 
     }
 
-    static public void imprimeResultado() {
+    static public void imprimeResultado(String resultado) {
 
         System.out.print("O aluno " + nome + " foi " + resultado + " no curso "
                         + curso + " com media " + media);

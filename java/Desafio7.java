@@ -35,7 +35,6 @@ public class Desafio7 {
         String nome;
         String empresa;
         double salario;
-        double aliquota;
         double valorDevido;
         
         System.out.print("Informe o nome do funcionario: ");
