@@ -1,6 +1,6 @@
 class Desafio2:
-    altura = float( input("Informe a altura do triangulo: ") )
-    base = float( input("Informe a base do triangulo: ") )
+    altura = float(input("Informe a altura do triangulo: "))
+    base = float(input("Informe a base do triangulo: "))
 
     @classmethod
     def calculaArea(cls):
@@ -10,5 +10,6 @@ class Desafio2:
     def imprime(cls):
         area = cls.calculaArea()
         print(f"A área do triangulo é de {area} centimetros")
+
 
 Desafio2.imprime()
