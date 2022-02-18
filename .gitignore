@@ -1,5 +1,10 @@
 # CUSTOM
 *.sh
+requirements.txt
+.flake8
+.vscode
+.pylintrc
+.pre-commit-config.yaml
 
 # Compiled class file
 *.class
