@@ -35,7 +35,8 @@ public class Desafio7 {
         String nome;
         String empresa;
         double salario;
-        double valorDevido;
+        double parcela;
+        double aliquota;
         
         System.out.print("Informe o nome do funcionario: ");
         nome = scanner.nextLine();
@@ -44,14 +45,15 @@ public class Desafio7 {
         System.out.print("Informe o salario do funcionario: ");
         salario = scanner.nextInt();
 
-        valorDevido = calculaDesconto(salario);
+        aliquota = calculaAliquota(salario);
+        parcela = calculaDesconto(salario);
+    
 
-        imprime(nome, empresa, valorDevido);
+        imprime(nome, empresa, parcela, aliquota);
     }
 
     static public double calculaAliquota(double salario) {
         if (salario <= 1903.98) {
-            System.out.println(salario);
             return 0;
         } else if (salario <= 2826.65) {
             return 7.5;
@@ -66,13 +68,13 @@ public class Desafio7 {
         return salario * ( calculaAliquota(salario) / 100 );
     }
 
-    static public void imprime(String nome, String empresa, double valorDevido){
-        if ( valorDevido == 0 ) {
+    static public void imprime(String nome, String empresa, double parcela, double aliquota){
+        if ( aliquota == 0 ) {
             System.out.print("O funcionario " + nome + " da empresa " 
                             + empresa + " esta isento");
         } else {
             System.out.print("O funcionario " + nome + " da empresa " 
-                            + empresa + " tera o valor de " + valorDevido 
+                            + empresa + " tera o valor de " + parcela 
                             + " a deduzir do salario");
 
         }
