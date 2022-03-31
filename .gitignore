@@ -5,6 +5,9 @@ requirements.txt
 .vscode
 .pylintrc
 .pre-commit-config.yaml
+ajuda/
+*.zip
+workspace.code-workspace
 
 # Compiled class file
 *.class
