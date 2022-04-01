@@ -21,11 +21,10 @@ def ler_entrada():
     try:
         consumo = float(input("Informe o valor total do consumo: "))
         num_pessoas = int(input("Informe o numero de pessoas: "))
-        taxa_servico = float(input("Informe a taxa de serviço em % (entre 0 e 100): "))/100
+        taxa_servico = float(input("Informe a taxa de serviço em % (entre 0 e 100): "))
 
     except ValueError as err:
-        print(f"Valor invalido! - {err.args[0]}")
-        exit(1)
+        raise ValueError({"error": "Valor invalido!", "msg": err.args[0]})
     
     return {
         "consumo": consumo,
@@ -34,30 +33,29 @@ def ler_entrada():
     }
 
 
-def entrada_valida(conta):
+def validar_entrada(conta):
 
     if (conta["consumo"] <= 0):
-        print("Valor de consumo invalido.")
-        return False
+        raise ValueError({"error": "Valor de consumo invalido", "msg": "O valor do consumo deve ser superior a zero"})
 
     if (conta["num_pessoas"] <= 0):
-        print("Numero de pessoas invalido.")
-        return False
+        raise ValueError({"error": "Numero de pessoas invalido", "msg": "O numero de pessoas deve ser superior a zero"})
 
-    if (conta["taxa_servico"] < 0) and (conta["taxa_servico"] > 100):
-        print("Taxa de serviço inválida")
-        return False
-    
-    return True
+    if (conta["taxa_servico"] < 0) or (conta["taxa_servico"] > 100):
+        raise ValueError({"error": "Taxa de serviço inválida", "msg": "A taxa de serviço dever ser um valor de 0 a 100"})
+
+    return
 
 
 def fechar_conta(conta):
-    total_da_conta = round(conta["consumo"] * (1 + conta["taxa_servico"]), 2)
+    total_da_conta = round(conta["consumo"] * (1 + conta["taxa_servico"] / 100), 2)
     valor_por_pessoa = round(total_da_conta/conta["num_pessoas"], 2)
-    total_da_conta = f"{total_da_conta:.2f}".replace(".",",")
-    valor_por_pessoa = f"{valor_por_pessoa:.2f}".replace(".",",")
+    total_da_conta = formatar_valor(total_da_conta)
+    valor_por_pessoa = formatar_valor(valor_por_pessoa)
     return {"valor_total": total_da_conta, "valor_pessoa": valor_por_pessoa}
 
+def formatar_valor(valor):
+    return f"{valor:.2f}".replace(".",",")
 
 def impressao(conta):
     conta_total = fechar_conta(conta)
@@ -66,9 +64,10 @@ def impressao(conta):
     print(f'Dividindo a conta por {conta["num_pessoas"]} pessoa(s), cada pessoa deverá pagar R$ {conta_total["valor_pessoa"]}')
 
 
-conta = ler_entrada()
-
-if entrada_valida(conta):
+try:
+    conta = ler_entrada()
+    validar_entrada(conta)
     impressao(conta)
-else:
-    exit(1)
+    
+except Exception as err:
+    print(err)

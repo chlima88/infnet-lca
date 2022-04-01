@@ -9,6 +9,20 @@
 # O programa deve verificar se a idade da pessoa é maior do que zero.
 
 
+
+def ler_entrada():
+    try:
+        return int(input("Informe a idade: "))
+    except ValueError as err:
+        raise ValueError({"error": "Idade invalida", "msg": err.args[0]})
+
+
+def validar_entrada(idade):
+    if idade < 0: 
+        raise ValueError({"error": "Idade inválida", "msg": "A idade deve ser igual ou maior que zero"})
+    return
+
+
 def verificar_idade(idade):
     if idade < 16:
         return "Não tem direito a voto."
@@ -17,20 +31,16 @@ def verificar_idade(idade):
     else:
         return "Eleitor obrigatório."
 
+
 def impressao(idade):
     resultado = verificar_idade(idade)
     print(resultado)
 
-def ler_entrada():
-    try:
-        idade = int(input("Informe a idade: "))
-        if idade < 0: 
-            raise(ValueError('Idade não pode ser menor que 0'))
-        else:
-            return idade
 
-    except ValueError as err:
-        print(f"Idade inválida! {err}")
-        exit(1)
+try:
+    idade = ler_entrada()
+    validar_entrada(idade)
+    impressao(idade)
 
-impressao(ler_entrada())
+except ValueError as err:
+    print(err)
