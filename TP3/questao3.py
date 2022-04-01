@@ -53,4 +53,4 @@ try:
     obter_participantes()
     impressao()
 except ValueError as err:
-        print(err)
+    print(err)
