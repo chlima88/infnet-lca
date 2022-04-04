@@ -36,7 +36,7 @@ def obter_vencedor():
 
 
 def obter_participantes():
-    for indice in range(2):
+    for indice in range(5):
         participante = ler_entrada(indice)
         validar_entrada(participante)
         participantes.append(participante)
