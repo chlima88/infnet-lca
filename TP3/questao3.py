@@ -19,7 +19,7 @@ def validar_entrada(entrada):
     if entrada["nome"] == '':
         raise ValueError({"error":"Nome inválido","msg":"O nome não pode ser vazio"})
     
-    if entrada["nota"] < 0 or entrada["nota"] >= 10:
+    if entrada["nota"] < 0 or entrada["nota"] > 10:
         raise ValueError({"error":"Nota inválida","msg":"A nota deve ser um valor de 0 e 10"})
 
     return
